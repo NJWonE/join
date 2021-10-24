@@ -21,6 +21,7 @@ const process = {
             if(users.pass[idx]===pass){
                 return res.json({
                     success : true,
+                    msg : "로그인 성공",
                 }
             )
         }
