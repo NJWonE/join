@@ -1,7 +1,6 @@
 "ues strict";
 
-
-const userStorage = require("../models/userstorage");
+const User = require("../models/user");
 
 const output = {
 
@@ -14,23 +13,9 @@ const output = {
 }};
 const process = {
     login : (req, res)=>{
-        const id = req.body.id,
-        pass = req.body.pass;
-
-       const users = userStorage.getUsers("id", "pass");
-
-        const response = {};
-         if(users.id.includes(id)){
-            const idx = users.id.indexOf(id);
-            if(users.pass[idx]===pass){
-                response.success = true;
-                response.msg = "로그인에 성공";
-                return res.json(response);
-        }
-    } 
-    response.success = true;
-    response.msg = "로그인에 실패";
-    return res.json(response);
+        const user = new User(req.body);
+        const response = user.login();
+        return res.json(response);
     }, 
 };
 
