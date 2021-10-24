@@ -3,14 +3,16 @@
 const User = require("../models/user");
 
 const output = {
-
     login : (req, res) => {
-    res.render("login");
+        res.render("login");
 },
-
     join : (req , res) => {
-    res.render("join");
-}};
+        res.render("join");
+},  
+    register : (req, res)=>{
+        res.render("register")
+    },
+};
 const process = {
     login : (req, res)=>{
         const user = new User(req.body);
