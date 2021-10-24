@@ -1,17 +1,22 @@
 "ues stritc"
 
 const id = document.querySelector("#id"),
+    name = document.querySelector("#name"),
     pass = document.querySelector("#pass"),
-    loginBtn = document.querySelector("#button");
+    confirmPass = document.querySelector("#confirm-pass"),
+    registerBtn = document.querySelector("#button");
 
-    loginBtn.addEventListener("click", login);
+    registerBtn.addEventListener("click", register);
 
-    function login(){
+    function register(){
         const req = {
             id: id.value,
+            name: name.value,
             pass: pass.value,
+            confirmPass : confirmPass.value,
         };
-        fetch("/", {
+        console.log(req);
+         fetch("/", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json",
@@ -27,6 +32,6 @@ const id = document.querySelector("#id"),
                 alert(res.msg);
             }
         }).catch((err)=>{
-            console.error("로그인 중 에러");
-        });
+            console.error("회원가입 중 에러");
+        }); 
     }
