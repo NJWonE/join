@@ -1,6 +1,15 @@
 "ues stritc"
-console.log("Hello");
 
-console.log("bye");
+const id = document.querySelector("#id"),
+    psss = document.querySelector("#pass"),
+    loginBtn = document.querySelector("button");
 
-console.log("again");
+    loginBtn.addEventListener("click", login);
+
+    function login(){
+        const req = {
+            id: id.value,
+            pass: pass.value
+        }
+        console.log(req);
+    }
