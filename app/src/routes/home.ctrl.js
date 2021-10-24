@@ -1,8 +1,8 @@
 "ues strict";
-const users = {
-    id : ["응", "아니야", "돌아가"],
-    pass : ["ㅇㅇ", "ㅇㄴㅇ", "ㄷㅇㄱ"],
-};
+
+
+const userStorage = require("../models/userstorage");
+
 const output = {
 
     login : (req, res) => {
@@ -16,21 +16,22 @@ const process = {
     login : (req, res)=>{
         const id = req.body.id,
         pass = req.body.pass;
-        if(users.id.includes(id)){
+
+       const users = userStorage.getUsers("id", "pass");
+
+        const response = {};
+         if(users.id.includes(id)){
             const idx = users.id.indexOf(id);
             if(users.pass[idx]===pass){
-                return res.json({
-                    success : true,
-                    msg : "로그인 성공",
-                }
-            )
+                response.success = true;
+                response.msg = "로그인에 성공";
+                return res.json(response);
         }
-    }
-    return res.json({
-        success : false,
-        msg : "로그인에 실패",
-    });
-    },
+    } 
+    response.success = true;
+    response.msg = "로그인에 실패";
+    return res.json(response);
+    }, 
 };
 
 module.exports = {
