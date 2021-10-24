@@ -12,4 +12,13 @@ const id = document.querySelector("#id"),
             pass: pass.value
         }
         console.log(req);
+        console.log(JSON.stringify(req));
+        fetch("/login", {
+            method : "POST",
+            headers : {
+                "Content-Type": "apllication/sjon",
+            },
+            body : JSON.stringify(req)
+        });
+    
     }
