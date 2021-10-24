@@ -1,7 +1,7 @@
 "ues stritc"
 
 const id = document.querySelector("#id"),
-    psss = document.querySelector("#pass"),
+    pass = document.querySelector("#pass"),
     loginBtn = document.querySelector("button");
 
     loginBtn.addEventListener("click", login);
@@ -9,16 +9,16 @@ const id = document.querySelector("#id"),
     function login(){
         const req = {
             id: id.value,
-            pass: pass.value
-        }
-        console.log(req);
-        console.log(JSON.stringify(req));
-        fetch("/login", {
+            pass: pass.value,
+        };
+        fetch("/", {
             method : "POST",
             headers : {
-                "Content-Type": "apllication/sjon",
+                "Content-Type" : "application/json",
             },
-            body : JSON.stringify(req)
-        });
+            body : JSON.stringify(req),
+        })
+        .then((res) => res.json())
+        .then(console.log);
     
     }
