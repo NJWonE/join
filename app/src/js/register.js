@@ -9,14 +9,14 @@ const id = document.querySelector("#id"),
     registerBtn.addEventListener("click", register);
 
     function register(){
+        if (!id.value) return alert("아이디가 없습니다.");
+        if (pass.value !== confirmPass.value)return alert("비밀번호가 일치하지 않습니다.");
         const req = {
             id: id.value,
             name: name.value,
             pass: pass.value,
-            confirmPass : confirmPass.value,
         };
-        console.log(req);
-         fetch("/", {
+         fetch("/register", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json",
@@ -27,9 +27,8 @@ const id = document.querySelector("#id"),
         .then((res) =>{
             if(res.success){
                 location.href = "/";
-                alert(res.msg);
             } else {
-                alert(res.msg);
+                location.href = "/register";
             }
         }).catch((err)=>{
             console.error("회원가입 중 에러");

@@ -7,15 +7,20 @@ class User{
         this.body = body;
     }
     login(){
-        const body = this.body;
-        const {id, pass} = userStorage.getUserInfo(body.id); 
+        const client = this.body;
+        const {id, pass} = userStorage.getUserInfo(client.id); 
         if(id){
-        if (id === body.id && pass === body.pass){
+        if (id === client.id && pass === client.pass){
             return { success : true, msg : "로그인성공" };
         }
         return { success : false, msg : "비밀번호틀림"};
         }
         return { success : false, msg : "아이디가없음"};
+    }
+    register(){
+        const client = this.body;
+        const response = userStorage.save(client);
+        return response;
     }
 };
 
