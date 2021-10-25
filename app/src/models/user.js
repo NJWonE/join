@@ -6,9 +6,9 @@ class User{
     constructor(body){ 
         this.body = body;
     }
-    login(){
+    async login(){
         const client = this.body;
-        const {id, pass} = userStorage.getUserInfo(client.id); 
+        const {id, pass} = await userStorage.getUserInfo(client.id); 
         if(id){
         if (id === client.id && pass === client.pass){
             return { success : true, msg : "로그인성공" };
