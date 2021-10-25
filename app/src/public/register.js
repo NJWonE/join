@@ -28,7 +28,7 @@ const id = document.querySelector("#id"),
             if(res.success){
                 location.href = "/";
             } else {
-                location.href = "/register";
+                alert(res.msg);
             }
         }).catch((err)=>{
             console.error("회원가입 중 에러");
